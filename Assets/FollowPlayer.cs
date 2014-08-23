@@ -2,11 +2,12 @@
 using System.Collections;
 
 public class FollowPlayer : MonoBehaviour {
-	public GameObject player;
 	private float zPos;
+	private GameObject player;
 
 	// Use this for initialization
 	void Start () {
+		player = GameObject.Find ("Player");
 		zPos = player.transform.position.z - 10;
 	}
 	

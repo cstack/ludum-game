@@ -9,9 +9,11 @@ public class Player : MonoBehaviour {
 	public float jumpSpeed = 30f;
 	public float lastUpdateXPosition = 0f;
 
+	public TerrainGenerator generator;
+
 	// Use this for initialization
 	void Start () {
-
+		generator = new TerrainGenerator ();
 	}
 	
 	// Update is called once per frame
@@ -30,8 +32,8 @@ public class Player : MonoBehaviour {
 		rigidbody2D.velocity = new Vector3(speed, yVelocity, 0f);
 
 		if (transform.position.x > lastUpdateXPosition + 100f) {
-			loadMoreTerrain();
-			deleteOldTerrain();
+			generator.loadMoreTerrain();
+			generator.deleteOldTerrain();
 			lastUpdateXPosition = transform.position.x;
 		}
 

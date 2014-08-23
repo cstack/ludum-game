@@ -7,10 +7,13 @@ public class Player : MonoBehaviour {
 	public bool inForeground = true;
 	public float speed = 1f;
 	public float jumpSpeed = 30f;
+	public float nextUpdateXPosition = 0f;
+	public float terrainSegmentSize = 100f;
+
+	public TerrainGenerator generator;
 
 	// Use this for initialization
 	void Start () {
-
 	}
 	
 	// Update is called once per frame
@@ -27,6 +30,13 @@ public class Player : MonoBehaviour {
 		}
 
 		rigidbody2D.velocity = new Vector3(speed, yVelocity, 0f);
+
+		if (transform.position.x > nextUpdateXPosition) {
+			generator.loadMoreTerrain(nextUpdateXPosition + terrainSegmentSize);
+			generator.deleteOldTerrain();
+			nextUpdateXPosition = nextUpdateXPosition + terrainSegmentSize;
+		}
+
 		updateZPosition (inForeground ? 0f : worldDistance);
 	}
 

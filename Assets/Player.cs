@@ -7,13 +7,16 @@ public class Player : MonoBehaviour {
 	public bool inForeground = true;
 	public float speed = 1f;
 	public float jumpSpeed = 30f;
-	public float nextUpdateXPosition = 0f;
-	public float terrainSegmentSize = 100f;
+	public float nextTerrainUpdate = 0f;
+	public float nextBackgroundUpdate = 10f;
 
 	public TerrainGenerator generator;
+	public BackgroundManager backgroundManagerPrefab;
+	BackgroundManager backgroundManager;
 
 	// Use this for initialization
 	void Start () {
+		backgroundManager = (BackgroundManager) Instantiate (backgroundManagerPrefab);
 	}
 	
 	// Update is called once per frame
@@ -31,10 +34,15 @@ public class Player : MonoBehaviour {
 
 		rigidbody2D.velocity = new Vector3(speed, yVelocity, 0f);
 
-		if (transform.position.x > nextUpdateXPosition) {
-			generator.loadMoreTerrain(nextUpdateXPosition + terrainSegmentSize);
+		if (transform.position.x > nextTerrainUpdate) {
+			generator.loadMoreTerrain(nextTerrainUpdate + generator.terrainSegmentSize);
 			generator.deleteOldTerrain();
-			nextUpdateXPosition = nextUpdateXPosition + terrainSegmentSize;
+			nextTerrainUpdate = nextTerrainUpdate + generator.terrainSegmentSize;
+		}
+
+		if (transform.position.x > nextBackgroundUpdate) {
+			backgroundManager.shiftPanels();
+			nextBackgroundUpdate = nextBackgroundUpdate + backgroundManager.frameWidth;
 		}
 
 		updateZPosition (inForeground ? 0f : worldDistance);
@@ -48,6 +56,7 @@ public class Player : MonoBehaviour {
 
 	void switchWorlds() {
 		inForeground = !inForeground;
+		backgroundManager.switchBackgroundImage ();
 	}
 
 	void updateZPosition(float pos) {

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public class TerrainGenerator : MonoBehaviour
 {
+	public float terrainSegmentSize = 100f;
+
 	public Queue<TerrainSegmentPrefab> terrainSegments;
 	public TerrainSegmentPrefab terrainSegmentPrefab;
 	

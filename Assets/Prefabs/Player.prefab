@@ -83,7 +83,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!4 &400002
 Transform:
   m_ObjectHideFlags: 1
@@ -95,7 +95,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!4 &400004
 Transform:
   m_ObjectHideFlags: 1
@@ -109,7 +109,6 @@ Transform:
   - {fileID: 400006}
   - {fileID: 400002}
   - {fileID: 400000}
-  - {fileID: 400006}
   m_Father: {fileID: 0}
   m_RootOrder: 0
 --- !u!4 &400006
@@ -123,7 +122,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400004}
-  m_RootOrder: 2
+  m_RootOrder: 0
 --- !u!20 &2000000
 Camera:
   m_ObjectHideFlags: 1
@@ -234,9 +233,11 @@ MonoBehaviour:
   inForeground: 1
   speed: 10
   jumpSpeed: 30
-  nextUpdateXPosition: 0
-  terrainSegmentSize: 100
+  nextTerrainUpdate: 0
+  nextBackgroundUpdate: 10
   generator: {fileID: 11400004}
+  backgroundManagerPrefab: {fileID: 11400000, guid: ffa04026f162d4da58b5b0c3c456279d,
+    type: 2}
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -259,6 +260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cb52ac88cb1141818589a03b2cfc74f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  terrainSegmentSize: 100
   terrainSegmentPrefab: {fileID: 11400000, guid: 64dc97cfb71b54376b16fc786be353d7,
     type: 2}
 --- !u!124 &12400000

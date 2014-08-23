@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
 	public float worldDistance = 5f;
 	public bool inForeground = true;
 	public float speed = 1f;
+	public float jumpSpeed = 30f;
 
 	// Use this for initialization
 	void Start () {
@@ -14,10 +15,10 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float yVelocity = rigidbody.velocity.y;
+		float yVelocity = rigidbody2D.velocity.y;
 
 		if (Input.GetButtonDown("Jump") && grounded) {
-			yVelocity = 10f;
+			yVelocity = jumpSpeed;
 			grounded = false;
 		}
 
@@ -25,11 +26,11 @@ public class Player : MonoBehaviour {
 			switchWorlds();
 		}
 
-		rigidbody.velocity = new Vector3(speed, yVelocity, 0f);
+		rigidbody2D.velocity = new Vector3(speed, yVelocity, 0f);
 		updateZPosition (inForeground ? 0f : worldDistance);
 	}
 
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionEnter2D(Collision2D collision) {
 		if (collision.gameObject.tag == "ground") {
 			grounded = true;
 		}

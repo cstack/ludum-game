@@ -48,6 +48,7 @@ public class Player : MonoBehaviour {
 
 	void switchWorlds() {
 		inForeground = !inForeground;
+		gameObject.layer = inForeground ? LayerMask.NameToLayer ("Plane1") : LayerMask.NameToLayer ("Plane2");
 	}
 
 	void updateZPosition(float pos) {

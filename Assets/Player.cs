@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
 	public bool inForeground = true;
 	public float speed = 1f;
 	public float jumpSpeed = 30f;
+	public float lastUpdateXPosition = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -27,6 +28,13 @@ public class Player : MonoBehaviour {
 		}
 
 		rigidbody2D.velocity = new Vector3(speed, yVelocity, 0f);
+
+		if (transform.position.x > lastUpdateXPosition + 100f) {
+			loadMoreTerrain();
+			deleteOldTerrain();
+			lastUpdateXPosition = transform.position.x;
+		}
+
 		updateZPosition (inForeground ? 0f : worldDistance);
 	}
 

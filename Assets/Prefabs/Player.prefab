@@ -224,6 +224,7 @@ MonoBehaviour:
   grounded: 0
   worldDistance: 5
   inForeground: 1
+  initialSpeed: 10
   speed: 10
   jumpSpeed: 30
   nextTerrainUpdate: 0

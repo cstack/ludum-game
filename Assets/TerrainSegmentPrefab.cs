@@ -12,7 +12,7 @@ public class TerrainSegmentPrefab : MonoBehaviour {
 	}
 
 	public void init(int numTracks) {
-		List<List<float>> obstaclePositions = generateObstaclePositions (numTracks);
+		List<List<ObstaclePosition>> obstaclePositions = generateObstaclePositions (numTracks);
 
 		for (int n = 0; n < numTracks; n++) {
 			TrackPrefab track = (TrackPrefab) Instantiate(trackPrefab);
@@ -22,16 +22,17 @@ public class TerrainSegmentPrefab : MonoBehaviour {
 		}
 	}
 
-	private List<List<float>> generateObstaclePositions(int numTracks) {
-		List<List<float>> positions = new List<List<float>> ();
+	private List<List<ObstaclePosition>> generateObstaclePositions(int numTracks) {
+		List<List<ObstaclePosition>> positions = new List<List<ObstaclePosition>> ();
 		for (int i = 0; i < numTracks; i++) {
-			positions.Add(new List<float>());
+			positions.Add(new List<ObstaclePosition>());
 		}
 
-		List<float> allPositions = new List<float> ();
+		List<ObstaclePosition> allPositions = new List<ObstaclePosition> ();
 		for (int i = 0; i < 10; i++) {
 			float position = i * 10f + Random.Range(-3f, 3f);
-			allPositions.Add(position);
+			bool passable = Random.value < 0.75f;
+			allPositions.Add(new ObstaclePosition(position, passable));
 		}
 
 		// Divide positions between the tracks

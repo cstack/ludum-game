@@ -10,13 +10,13 @@ public class TrackPrefab : MonoBehaviour {
 	
 	}
 
-	public void createObstacles (List<float> positions) {
-		foreach (float position in positions) {
+	public void createObstacles (List<ObstaclePosition> positions) {
+		foreach (ObstaclePosition position in positions) {
 			int prefabIndex = Random.Range(0, obstaclePrefabs.Length);
 			GameObject prefab = obstaclePrefabs[prefabIndex];
 			GameObject obstacle = (GameObject) Instantiate(prefab);
 			obstacle.transform.parent = transform;
-			obstacle.transform.position = transform.position + new Vector3(position, 1f, 0f);
+			obstacle.transform.position = transform.position + new Vector3(position.xPos, 1f, 0f);
 		}
 	}
 	

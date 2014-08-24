@@ -2,17 +2,19 @@
 using System.Collections;
 
 public class BackgroundManager : MonoBehaviour {
+	public Material fireBackgroundMaterial;
+	public Material iceBackgroundMaterial;
 
 	public float frameWidth = 10f;
 
 	// Use this for initialization
 	void Start () {
-	
+		switchBackgroundImage (true);
 	}
 
-	public void switchBackgroundImage () {
+	public void switchBackgroundImage (bool inForeground) {
 		foreach (Transform child in transform) {
-			//  change the background image in each panel
+			child.GetComponent<MeshRenderer>().material = inForeground ? fireBackgroundMaterial : iceBackgroundMaterial;
 		}
 	}
 

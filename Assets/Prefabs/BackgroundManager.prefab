@@ -465,6 +465,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b2b44ff24cec48c0b9e60373bda5be9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireBackgroundMaterial: {fileID: 2100000, guid: 0848ba135f12f4ed3ab1990efc5c83c5,
+    type: 2}
+  iceBackgroundMaterial: {fileID: 2100000, guid: 61447675b4c1f463897d0bf3fdff69bd,
+    type: 2}
   frameWidth: 10
 --- !u!1001 &100100000
 Prefab:

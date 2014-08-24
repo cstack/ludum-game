@@ -9,6 +9,7 @@ public class Player : MonoBehaviour {
 	public float jumpSpeed = 30f;
 	public float nextTerrainUpdate = 0f;
 	public float nextBackgroundUpdate = 10f;
+	public bool dead = false;
 
 	public TerrainGenerator generator;
 	public BackgroundManager backgroundManagerPrefab;
@@ -21,6 +22,9 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (dead) {
+			return;
+		}
 		float yVelocity = rigidbody.velocity.y;
 
 		if (Input.GetButtonDown("Jump") && grounded) {
@@ -51,7 +55,24 @@ public class Player : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "ground") {
 			grounded = true;
+		} else if (collision.gameObject.tag == "obstacle") {
+			dead = true;
+			StartCoroutine(deathAnimation());
 		}
+	}
+
+	IEnumerator deathAnimation() {
+		GameObject sprite = transform.FindChild ("Sprite").gameObject;
+		Animator animator = sprite.GetComponent<Animator> ();
+		animator.SetTrigger ("die");
+		gameObject.layer = LayerMask.NameToLayer ("NoInteraction");
+		rigidbody.velocity = Vector3.zero;
+		rigidbody.useGravity = false;
+		yield return new WaitForSeconds(0.5f);
+		rigidbody.useGravity = true;
+		rigidbody.velocity = new Vector3 (0f, jumpSpeed, 0f);
+		yield return new WaitForSeconds (3f);
+		Application.LoadLevel(Application.loadedLevel);
 	}
 
 	void switchWorlds() {

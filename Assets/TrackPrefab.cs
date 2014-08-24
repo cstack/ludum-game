@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class TrackPrefab : MonoBehaviour {
-	public GameObject[] obstaclePrefabs;
+	public Wall wallPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -12,9 +12,8 @@ public class TrackPrefab : MonoBehaviour {
 
 	public void createObstacles (List<float> positions) {
 		foreach (float position in positions) {
-			int prefabIndex = Random.Range(0, obstaclePrefabs.Length);
-			GameObject prefab = obstaclePrefabs[prefabIndex];
-			GameObject obstacle = (GameObject) Instantiate(prefab);
+			Wall obstacle = (Wall) Instantiate(wallPrefab);
+			obstacle.init(Random.Range(0, 5));
 			obstacle.transform.parent = transform;
 			obstacle.transform.position = transform.position + new Vector3(position, 1f, 0f);
 		}

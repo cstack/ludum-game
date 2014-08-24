@@ -28,8 +28,6 @@ public class BackgroundManager : MonoBehaviour {
 				maxXPosition = child.position.x;
 			}
 		}
-		Debug.Log (string.Format ("last child is at {0}", lastChild.transform.position.x));
-		Debug.Log (string.Format ("leading child is at {0}", maxXPosition));
 
 		//  Move the last panel
 		Transform panelToMove = lastChild;

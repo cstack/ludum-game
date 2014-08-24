@@ -21,7 +21,7 @@ public class Player : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float yVelocity = rigidbody2D.velocity.y;
+		float yVelocity = rigidbody.velocity.y;
 
 		if (Input.GetButtonDown("Jump") && grounded) {
 			yVelocity = jumpSpeed;
@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
 			switchWorlds();
 		}
 
-		rigidbody2D.velocity = new Vector3(speed, yVelocity, 0f);
+		rigidbody.velocity = new Vector3(speed, yVelocity, 0f);
 
 		if (transform.position.x > nextTerrainUpdate) {
 			generator.loadMoreTerrain(nextTerrainUpdate + generator.terrainSegmentSize);
@@ -48,7 +48,7 @@ public class Player : MonoBehaviour {
 		updateZPosition (inForeground ? 0f : worldDistance);
 	}
 
-	void OnCollisionEnter2D(Collision2D collision) {
+	void OnCollisionEnter(Collision collision) {
 		if (collision.gameObject.tag == "ground") {
 			grounded = true;
 		}

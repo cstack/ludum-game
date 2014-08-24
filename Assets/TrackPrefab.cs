@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class TrackPrefab : MonoBehaviour {
 	public GameObject[] obstaclePrefabs;
@@ -9,15 +10,13 @@ public class TrackPrefab : MonoBehaviour {
 	
 	}
 
-	public void createObstacles () {
-		foreach (GameObject obstaclePrefab in obstaclePrefabs) {
-			for (int i = 0; i < 5; i++) {
-				int prefabIndex = Random.Range(0, obstaclePrefabs.Length);
-				GameObject prefab = obstaclePrefabs[prefabIndex];
-				GameObject obstacle = (GameObject) Instantiate(obstaclePrefab);
-				obstacle.transform.parent = transform;
-				obstacle.transform.position = new Vector3(transform.position.x + i * 10 + Random.Range(-5f, 5f), transform.position.y + 1f, transform.position.z);
-			}
+	public void createObstacles (List<float> positions) {
+		foreach (float position in positions) {
+			int prefabIndex = Random.Range(0, obstaclePrefabs.Length);
+			GameObject prefab = obstaclePrefabs[prefabIndex];
+			GameObject obstacle = (GameObject) Instantiate(prefab);
+			obstacle.transform.parent = transform;
+			obstacle.transform.position = transform.position + new Vector3(position, 1f, 0f);
 		}
 	}
 	

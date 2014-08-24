@@ -5,7 +5,8 @@ public class Player : MonoBehaviour {
 	public bool grounded = false;
 	public float worldDistance = 5f;
 	public bool inForeground = true;
-	public float speed = 1f;
+	public float initialSpeed = 1f;
+	public float speed;
 	public float jumpSpeed = 30f;
 	public float nextTerrainUpdate = 0f;
 	public float nextBackgroundUpdate = 10f;
@@ -18,6 +19,7 @@ public class Player : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		backgroundManager = (BackgroundManager) Instantiate (backgroundManagerPrefab);
+		speed = initialSpeed;
 	}
 	
 	// Update is called once per frame
@@ -36,6 +38,8 @@ public class Player : MonoBehaviour {
 			switchWorlds();
 		}
 
+		speed += speedDerivative (Time.timeSinceLevelLoad) * Time.deltaTime;
+
 		rigidbody.velocity = new Vector3(speed, yVelocity, 0f);
 
 		if (transform.position.x > nextTerrainUpdate) {
@@ -50,6 +54,11 @@ public class Player : MonoBehaviour {
 		}
 
 		updateZPosition (inForeground ? 0f : worldDistance);
+	}
+
+	float speedDerivative (float t) {
+		//return 0.1f * t * Mathf.Exp (-t / 10f);
+		return 0.2f;
 	}
 
 	void OnCollisionEnter(Collision collision) {

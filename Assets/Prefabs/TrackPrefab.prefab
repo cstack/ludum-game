@@ -30,6 +30,7 @@ Transform:
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+  m_RootOrder: 0
 --- !u!23 &2300000
 Renderer:
   m_ObjectHideFlags: 1
@@ -48,9 +49,8 @@ Renderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   m_SortingLayerID: 0
+  m_SortingOrder: 0
 --- !u!33 &3300000
 MeshFilter:
   m_ObjectHideFlags: 1
@@ -81,10 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1afab2bd5156642b6b46a7363bb262ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefabs:
-  - {fileID: 100000, guid: dc614cd526cae43b7b5caf2bc9185ca3, type: 2}
-  - {fileID: 100000, guid: c54552e062cc04d25a7c783f060ea5f0, type: 2}
-  - {fileID: 100000, guid: 329fe1a207f17434faa32ae6a6dbe8ed, type: 2}
+  wallPrefab: {fileID: 11400000, guid: c54552e062cc04d25a7c783f060ea5f0, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

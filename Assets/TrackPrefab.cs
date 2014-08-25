@@ -12,14 +12,19 @@ public class TrackPrefab : MonoBehaviour {
 
 	public void createObstacles (List<ObstaclePosition> positions) {
 		foreach (ObstaclePosition position in positions) {
-			Wall obstacle = (Wall) Instantiate(wallPrefab);
-			obstacle.init(Random.Range(0, 5));
-			obstacle.transform.parent = transform;
-			obstacle.transform.position = transform.position + new Vector3(position.xPos, 1f, 0f);
+			generateObstacle(position);
 		}
 	}
-	
-	// Update is called once per frame
+
+	private void generateObstacle(ObstaclePosition position) {
+		Wall obstacle = (Wall)Instantiate (wallPrefab);
+		int height = position.passable ? Random.Range (1, 3) : Random.Range (4, 10);
+		obstacle.init (height);
+		obstacle.transform.parent = transform;
+		obstacle.transform.position = transform.position + new Vector3 (position.xPos + Random.Range(-3f, 3f), 1f, 0f);
+	}
+		
+		// Update is called once per frame
 	void Update () {
 	
 	}

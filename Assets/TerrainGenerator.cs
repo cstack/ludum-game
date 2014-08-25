@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class TerrainGenerator : MonoBehaviour
 {
 	public float terrainSegmentSize = 100f;
+	public float initialPortionFilled = 0.5f;
+	public float portionFilled;
 
 	public Queue<TerrainSegmentPrefab> terrainSegments;
 	public TerrainSegmentPrefab terrainSegmentPrefab;
@@ -12,6 +14,7 @@ public class TerrainGenerator : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		portionFilled = initialPortionFilled;
 		terrainSegments = new Queue<TerrainSegmentPrefab> ();
 	}
 	
@@ -19,7 +22,7 @@ public class TerrainGenerator : MonoBehaviour
 		TerrainSegmentPrefab segment = (TerrainSegmentPrefab) Instantiate (terrainSegmentPrefab);
 		segment.transform.position = new Vector3 (lowerLeftCorner, 0, 0);
 
-		segment.init (2); // TODO dynamically choose this number
+		segment.init (2, portionFilled); // TODO dynamically choose this number
 		terrainSegments.Enqueue (segment);
 	}
 	
@@ -34,7 +37,7 @@ public class TerrainGenerator : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		
+		portionFilled += Time.deltaTime * 0.005f;
 	}
 }
 

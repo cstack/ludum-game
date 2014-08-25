@@ -8,11 +8,10 @@ public class TerrainSegmentPrefab : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 
-	public void init(int numTracks) {
-		List<List<ObstaclePosition>> obstaclePositions = generateObstaclePositions (numTracks);
+	public void init(int numTracks, float portionFilled) {
+		List<List<ObstaclePosition>> obstaclePositions = generateObstaclePositions (numTracks, portionFilled);
 
 		for (int n = 0; n < numTracks; n++) {
 			TrackPrefab track = (TrackPrefab) Instantiate(trackPrefab);
@@ -22,27 +21,33 @@ public class TerrainSegmentPrefab : MonoBehaviour {
 		}
 	}
 
-	private List<List<ObstaclePosition>> generateObstaclePositions(int numTracks) {
-		List<List<ObstaclePosition>> positions = new List<List<ObstaclePosition>> ();
+	private List<List<ObstaclePosition>> generateObstaclePositions(int numTracks, float portionFilled) {
+		List<List<ObstaclePosition>> tracks = new List<List<ObstaclePosition>> ();
 		for (int i = 0; i < numTracks; i++) {
-			positions.Add(new List<ObstaclePosition>());
+			tracks.Add(new List<ObstaclePosition>());
 		}
 
 		List<ObstaclePosition> allPositions = new List<ObstaclePosition> ();
 		for (int i = 0; i < 10; i++) {
-			float position = i * 10f + Random.Range(-3f, 3f);
+			float position = i * 10f;
 			bool passable = Random.value < 0.75f;
 			allPositions.Add(new ObstaclePosition(position, passable));
 		}
 
 		// Divide positions between the tracks
-		int track = 0;
-		for (int i = 0; i < allPositions.Count; i++) {
-			positions[track++ % numTracks].Add(allPositions[i]);
+		foreach (ObstaclePosition position in allPositions) {
+			if (Random.value > portionFilled) continue;
+			if (position.passable) {
+				foreach (List<ObstaclePosition> track in tracks) {
+					track.Add(position);
+				}
+			} else {
+				List<ObstaclePosition> track = tracks[(int) Random.Range(0,numTracks-1)];
+				track.Add(position);
+			}
 		}
 
-		return positions;
-
+		return tracks;
 	}
 	
 	// Update is called once per frame

@@ -70,7 +70,7 @@ public class Player : MonoBehaviour {
 			grounded = true;
 		} else if (collision.gameObject.tag == "obstacle") {
 			Vector3 normal = collision.contacts[0].normal;
-			if (normal.x < 0f) {
+			if (normal.x < 0f && (Mathf.Abs (normal.x) > Mathf.Abs (normal.y))) {
 				// Collided on side
 				dead = true;
 				StartCoroutine(deathAnimation());

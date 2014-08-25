@@ -34,8 +34,8 @@ public class Player : MonoBehaviour {
 			grounded = false;
 		}
 
-		if (Input.GetButtonUp("Jump")) {
-			yVelocity = 0f;
+		if (Input.GetButtonUp("Jump") && yVelocity > 0) {
+			yVelocity *= 0.2f;
 		}
 
 		if (Input.GetButtonDown("Fire1")) {

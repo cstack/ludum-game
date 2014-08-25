@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
 		float yVelocity = rigidbody.velocity.y;
 
 		//  Process User inputs
-		if (Input.GetButtonDown("Jump") && grounded) {
+		if (Input.GetButton("Jump") && grounded) {
 			yVelocity = jumpSpeed;
 			grounded = false;
 			jumpSound.Play ();

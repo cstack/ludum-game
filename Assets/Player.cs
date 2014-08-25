@@ -65,8 +65,16 @@ public class Player : MonoBehaviour {
 		if (collision.gameObject.tag == "ground") {
 			grounded = true;
 		} else if (collision.gameObject.tag == "obstacle") {
-			dead = true;
-			StartCoroutine(deathAnimation());
+			Vector3 normal = collision.contacts[0].normal;
+			if (Mathf.Abs(normal.x) > Mathf.Abs(normal.y)) {
+				// Collided on side
+				dead = true;
+				StartCoroutine(deathAnimation());
+			} else {
+				// Collided on top
+				grounded = true;
+			}
+
 		}
 	}
 

@@ -7,11 +7,11 @@ public class InitialObstacles : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Wall obstacle;;
-		for (int i = 0; i < 4; i++) {
+		for (int i = 0; i < 3; i++) {
 			obstacle = (Wall) Instantiate (wallPrefab);
 			obstacle.init (i+1);
 			obstacle.transform.parent = transform;
-			obstacle.transform.localPosition = new Vector3((i+1) * 15f, 1f, 0f);
+			obstacle.transform.localPosition = new Vector3((i+1) * 12f + 4f, 1f, i % 2 == 0 ? 0f : 5f);
 		}
 	}
 	

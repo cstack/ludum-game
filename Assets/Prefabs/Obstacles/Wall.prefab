@@ -27,7 +27,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -39,7 +38,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8394eca81114f6b8c1bbcff813fc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blockPrefab: {fileID: 100000, guid: dc614cd526cae43b7b5caf2bc9185ca3, type: 2}
+  blockPrefab: {fileID: 11400000, guid: dc614cd526cae43b7b5caf2bc9185ca3, type: 2}
   height: 5
 --- !u!1001 &100100000
 Prefab:

@@ -2,18 +2,19 @@
 using System.Collections;
 
 public class Wall : MonoBehaviour {
-	public GameObject blockPrefab;
+	public GroundTile blockPrefab;
 	public int height;
 
 	// Use this for initialization
 	void Start () {
 	}
 
-	public void init(int h) {
+	public void init(int h, bool light) {
 		height = h;
 
 		for (int n = 0; n < height; n++) {
-			GameObject block = (GameObject) Instantiate(blockPrefab);
+			GroundTile block = (GroundTile) Instantiate(blockPrefab);
+			block.init(light);
 			block.transform.parent = transform;
 			block.transform.localPosition = new Vector3 (0f, 1f * n, 0f);
 		}

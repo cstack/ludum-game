@@ -15,6 +15,8 @@ public class TerrainSegmentPrefab : MonoBehaviour {
 
 		for (int n = 0; n < numTracks; n++) {
 			TrackPrefab track = (TrackPrefab) Instantiate(trackPrefab);
+			bool light = (n == 1);
+			track.init(light);
 			track.transform.parent = transform;
 			track.transform.localPosition = new Vector3 (0f, 0f, 5f * n);
 			track.createObstacles (obstaclePositions[n]);

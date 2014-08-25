@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class TrackPrefab : MonoBehaviour {
 	public Wall wallPrefab;
 
+	private bool light;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -16,10 +18,16 @@ public class TrackPrefab : MonoBehaviour {
 		}
 	}
 
+	public void init (bool light) {
+		this.light = light;
+	}
+
+
+
 	private void generateObstacle(ObstaclePosition position) {
 		Wall obstacle = (Wall)Instantiate (wallPrefab);
 		int height = position.passable ? Random.Range (1, 3) : Random.Range (4, 10);
-		obstacle.init (height);
+		obstacle.init (height, light);
 		obstacle.transform.parent = transform;
 		obstacle.transform.position = transform.position + new Vector3 (position.xPos + Random.Range(-3f, 3f), 1f, 0f);
 	}

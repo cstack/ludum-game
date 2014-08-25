@@ -9,9 +9,10 @@ public class InitialObstacles : MonoBehaviour {
 		Wall obstacle;;
 		for (int i = 0; i < 3; i++) {
 			obstacle = (Wall) Instantiate (wallPrefab);
-			obstacle.init (i+1);
 			obstacle.transform.parent = transform;
-			obstacle.transform.localPosition = new Vector3((i+1) * 12f + 4f, 1f, i % 2 == 0 ? 0f : 5f);
+			bool foreground = i % 2 == 0;
+			obstacle.transform.localPosition = new Vector3((i+1) * 12f + 4f, 1f, foreground ? 0f : 5f);
+			obstacle.init (i+1, !foreground);
 		}
 	}
 	

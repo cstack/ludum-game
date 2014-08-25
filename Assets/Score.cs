@@ -19,7 +19,12 @@ public class Score : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!player.dead) {
-			score = (int) Time.timeSinceLevelLoad;
+			score = (int) (Time.timeSinceLevelLoad * 10f);
+		}
+		if (player.inForeground) {
+			gui.guiText.color = Color.black;
+		} else {
+			gui.guiText.color = Color.white;
 		}
 	}
 }

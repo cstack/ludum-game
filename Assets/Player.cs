@@ -34,6 +34,10 @@ public class Player : MonoBehaviour {
 			grounded = false;
 		}
 
+		if (Input.GetButtonUp("Jump")) {
+			yVelocity = 0f;
+		}
+
 		if (Input.GetButtonDown("Fire1")) {
 			switchWorlds();
 		}

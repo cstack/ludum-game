@@ -1,11 +1,24 @@
-<<<<<<< HEAD
 fileFormatVersion: 2
 guid: bf8c0722fae0e4d6ba8552df3daf95c4
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: LightProjectile_0
+    21300002: LightProjectile_1
+    21300004: LightProjectile_2
+    21300006: LightProjectile_3
+    21300008: LightProjectile_4
+    21300010: LightProjectile_5
+    21300012: LightProjectile_6
+    21300014: LightProjectile_7
+    21300016: LightProjectile_8
+    21300018: LightProjectile_9
+    21300020: LightProjectile_10
+    21300022: LightProjectile_11
+    21300024: LightProjectile_12
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
-    enableMipMap: 1
+    enableMipMap: 0
     linearTexture: 0
     correctGamma: 0
     fadeOut: 0
@@ -25,72 +38,153 @@ TextureImporter:
   maxTextureSize: 1024
   textureSettings:
     filterMode: -1
-    aniso: -1
+    aniso: 1
     mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
+    wrapMode: 1
+  nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 0
-  spriteExtrude: 1
-  spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: .5, y: .5}
-  spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
-  buildTargetSettings: []
-  spriteSheet:
-    sprites: []
-  spritePackingTag: 
-  userData: 
-||||||| merged common ancestors
-=======
-fileFormatVersion: 2
-guid: 42e09c4e905ae4b36a01704b8a3e4c3f
-TextureImporter:
-  fileIDToRecycleName: {}
-  serializedVersion: 2
-  mipmaps:
-    mipMapMode: 0
-    enableMipMap: 1
-    linearTexture: 0
-    correctGamma: 0
-    fadeOut: 0
-    borderMipMap: 0
-    mipMapFadeDistanceStart: 1
-    mipMapFadeDistanceEnd: 3
-  bumpmap:
-    convertToNormalMap: 0
-    externalNormalMap: 0
-    heightScale: .25
-    normalMapFilter: 0
-  isReadable: 0
-  grayScaleToAlpha: 0
-  generateCubemap: 0
-  seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
-  textureSettings:
-    filterMode: -1
-    aniso: -1
-    mipBias: -1
-    wrapMode: -1
-  nPOTScale: 1
-  lightmap: 0
-  compressionQuality: 50
-  spriteMode: 0
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
-  spritePixelsToUnits: 100
-  alphaIsTransparency: 0
-  textureType: -1
+  spritePixelsToUnits: 64
+  alphaIsTransparency: 1
+  textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: LightProjectile_0
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 24
+        width: 108
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_1
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 79
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_2
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 23
+        width: 108
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_3
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 55
+        width: 12
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_4
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 48
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_5
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 4
+        width: 10
+        height: 12
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_6
+      rect:
+        serializedVersion: 2
+        x: 116
+        y: 0
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_7
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 5
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_8
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 43
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_9
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 37
+        width: 16
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_10
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 4
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_11
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 31
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: LightProjectile_12
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 21
+        width: 109
+        height: 51
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
->>>>>>> add-sprites

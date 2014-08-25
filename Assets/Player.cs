@@ -5,6 +5,7 @@ public class Player : MonoBehaviour {
 	public bool grounded = false;
 	public float worldDistance = 5f;
 	public bool inForeground = true;
+	public bool switchedWorlds;
 	public float initialSpeed = 1f;
 	public float speed;
 	public float jumpSpeed = 30f;
@@ -20,6 +21,11 @@ public class Player : MonoBehaviour {
 
 	public float balanceValue = 0f; // The value of how "light/dark" the ball is
 	float maxBalanceValue = 5f;
+
+	public AudioSource deathSound;
+	public AudioSource jumpSound;
+	public AudioSource toLightSound;
+	public AudioSource toDarkSound;
 
 	// Use this for initialization
 	void Start () {
@@ -37,6 +43,7 @@ public class Player : MonoBehaviour {
 		if (Input.GetButtonDown("Jump") && grounded) {
 			yVelocity = jumpSpeed;
 			grounded = false;
+			jumpSound.Play ();
 		}
 
 		if (Input.GetButtonUp("Jump") && yVelocity > 0) {
@@ -75,6 +82,8 @@ public class Player : MonoBehaviour {
 		updateZPosition (inForeground ? 0f : worldDistance);
 		updateShadowPosition (inForeground ? worldDistance : -worldDistance);
 		updateBalanceShading ();
+
+		switchedWorlds = false; //  Allow hit sound again
 	}
 
 	void updateBalanceShading () {
@@ -99,16 +108,17 @@ public class Player : MonoBehaviour {
 			Vector3 normal = collision.contacts[0].normal;
 			if (normal.x < 0f && (Mathf.Abs (normal.x) > Mathf.Abs (normal.y))) {
 				die ();
+				return; // Don't play landed sound
 			} else {
 				// Collided on top
 				grounded = true;
 			}
-
 		}
 	}
 
 	void die () {
 		dead = true;
+		deathSound.Play ();
 		StartCoroutine (deathAnimation ());
 	}
 
@@ -128,6 +138,12 @@ public class Player : MonoBehaviour {
 
 	void switchWorlds() {
 		inForeground = !inForeground;
+		switchedWorlds = true;
+		if (inForeground) {
+			toLightSound.Play ();
+		} else {
+			toDarkSound.Play ();
+		}
 		gameObject.layer = inForeground ? LayerMask.NameToLayer ("Plane1") : LayerMask.NameToLayer ("Plane2");
 		backgroundManager.switchBackgroundImage (inForeground);
 	}

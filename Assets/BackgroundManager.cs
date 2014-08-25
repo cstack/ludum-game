@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class BackgroundManager : MonoBehaviour {
-	public Material fireBackgroundMaterial;
-	public Material iceBackgroundMaterial;
+	public Material lightBackgroundMaterial;
+	public Material darkBackgroundMaterial;
 
 	public float frameWidth = 10f;
 
@@ -13,9 +13,13 @@ public class BackgroundManager : MonoBehaviour {
 	}
 
 	public void switchBackgroundImage (bool inForeground) {
+		Material material = inForeground ? lightBackgroundMaterial : darkBackgroundMaterial;
+		GameObject.Find ("Main Camera").GetComponent<Skybox> ().material = material;
+		/*
 		foreach (Transform child in transform) {
-			child.GetComponent<MeshRenderer>().material = inForeground ? fireBackgroundMaterial : iceBackgroundMaterial;
+			child.GetComponent<MeshRenderer>().material = material;
 		}
+		*/
 	}
 
 	public void shiftPanels () {

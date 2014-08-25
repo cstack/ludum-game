@@ -66,10 +66,10 @@ public class Player : MonoBehaviour {
 			generator.deleteOldTerrain();
 			nextTerrainUpdate = nextTerrainUpdate + generator.terrainSegmentSize;
 		}
-		if (transform.position.x > nextBackgroundUpdate) {
+		/*if (transform.position.x > nextBackgroundUpdate) {
 			backgroundManager.shiftPanels();
 			nextBackgroundUpdate = nextBackgroundUpdate + backgroundManager.frameWidth;
-		}
+		}*/
 
 		//  Visual update Player and associated objects
 		updateZPosition (inForeground ? 0f : worldDistance);

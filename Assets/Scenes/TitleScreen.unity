@@ -155,6 +155,56 @@ Transform:
   m_Children:
   - {fileID: 1854645788}
   m_Father: {fileID: 0}
+--- !u!1 &1089882714
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1089882715}
+  - 132: {fileID: 1089882716}
+  m_Layer: 0
+  m_Name: Instructions3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1089882715
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089882714}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: .200000003, y: -.850000024, z: -6.26000023}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1854645788}
+--- !u!132 &1089882716
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089882714}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Find balance between the paths...
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4285953654
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1127724125
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +228,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1127724125}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.26000023}
+  m_LocalPosition: {x: .200000003, y: -.649999976, z: -6.26000023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1854645788}
@@ -193,7 +243,7 @@ GUIText:
   m_Text: Up to jump
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 100, y: -224.5}
+  m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 0}
@@ -215,7 +265,7 @@ GameObject:
   - 4: {fileID: 1646292152}
   - 132: {fileID: 1646292151}
   m_Layer: 0
-  m_Name: Instructions3
+  m_Name: Instructions4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +282,7 @@ GUIText:
   m_Text: Press space to begin.
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 100, y: -274.5}
+  m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 0}
@@ -251,7 +301,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1646292150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.26000023}
+  m_LocalPosition: {x: .200000003, y: -.899999976, z: -6.26000023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1854645788}
@@ -285,6 +335,7 @@ Transform:
   - {fileID: 1127724126}
   - {fileID: 1865491746}
   - {fileID: 1646292152}
+  - {fileID: 1089882715}
   m_Father: {fileID: 514736372}
 --- !u!212 &1854645789
 SpriteRenderer:
@@ -343,7 +394,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865491745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -6.26000023}
+  m_LocalPosition: {x: .200000003, y: -.699999988, z: -6.26000023}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1854645788}
@@ -358,7 +409,7 @@ GUIText:
   m_Text: Space to switch
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 100, y: -244.5}
+  m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 0}

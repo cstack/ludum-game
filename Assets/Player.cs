@@ -40,7 +40,7 @@ public class Player : MonoBehaviour {
 		float yVelocity = rigidbody.velocity.y;
 
 		//  Process User inputs
-		if (Input.GetButtonDown("Jump") && grounded) {
+		if (Input.GetButton("Jump") && grounded) {
 			yVelocity = jumpSpeed;
 			grounded = false;
 			jumpSound.Play ();
@@ -80,7 +80,7 @@ public class Player : MonoBehaviour {
 
 		//  Visual update Player and associated objects
 		updateZPosition (inForeground ? 0f : worldDistance);
-		updateShadowPosition (inForeground ? worldDistance : -worldDistance);
+		updateShadow (inForeground ? worldDistance : -worldDistance);
 		updateBalanceShading ();
 
 		switchedWorlds = false; //  Allow hit sound again
@@ -151,7 +151,14 @@ public class Player : MonoBehaviour {
 	void updateZPosition(float pos) {
 		transform.position = new Vector3 (transform.position.x, transform.position.y, pos);
 	}
-	void updateShadowPosition(float pos) {
+	void updateShadow(float pos) {
 		shadow.transform.localPosition = new Vector3 (0, 0, pos);
+		if (switchedWorlds) {
+			if (inForeground) {
+				shadow.color = new Color (0f, 0f, 0f, 0.25f);
+			} else {
+				shadow.color = new Color (1f, 1f, 1f, 0.25f);
+			}
+		}
 	}
 }

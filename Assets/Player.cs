@@ -15,11 +15,15 @@ public class Player : MonoBehaviour {
 	public TerrainGenerator generator;
 	public BackgroundManager backgroundManagerPrefab;
 	BackgroundManager backgroundManager;
+	public SpriteRenderer shadow;
+	public SpriteRenderer ballSprite;
+
+	public float balanceValue = 0f; // The value of how "light/dark" the ball is
+	float maxBalanceValue = 5f;
 
 	// Use this for initialization
 	void Start () {
 		backgroundManager = (BackgroundManager) Instantiate (backgroundManagerPrefab);
-		speed = initialSpeed;
 	}
 	
 	// Update is called once per frame
@@ -29,35 +33,57 @@ public class Player : MonoBehaviour {
 		}
 		float yVelocity = rigidbody.velocity.y;
 
+		//  Process User inputs
 		if (Input.GetButtonDown("Jump") && grounded) {
 			yVelocity = jumpSpeed;
 			grounded = false;
 		}
-
 		if (Input.GetButtonUp("Jump")) {
 			yVelocity = 0f;
 		}
-
 		if (Input.GetButtonDown("Fire1")) {
 			switchWorlds();
 		}
 
+		//  Update player properties
 		speed += speedDerivative (Time.timeSinceLevelLoad) * Time.deltaTime;
-
 		rigidbody.velocity = new Vector3(speed, yVelocity, 0f);
 
+		if (inForeground) {
+			balanceValue += Time.deltaTime;
+		} else {
+			balanceValue -= Time.deltaTime;
+		}
+		if (Mathf.Abs (balanceValue) >= maxBalanceValue) {
+			die ();
+			return;
+		}
+
+		//  Update Environment
 		if (transform.position.x > nextTerrainUpdate) {
 			generator.loadMoreTerrain(nextTerrainUpdate + generator.terrainSegmentSize);
 			generator.deleteOldTerrain();
 			nextTerrainUpdate = nextTerrainUpdate + generator.terrainSegmentSize;
 		}
-
 		if (transform.position.x > nextBackgroundUpdate) {
 			backgroundManager.shiftPanels();
 			nextBackgroundUpdate = nextBackgroundUpdate + backgroundManager.frameWidth;
 		}
 
+		//  Visual update Player and associated objects
 		updateZPosition (inForeground ? 0f : worldDistance);
+		updateShadowPosition (inForeground ? worldDistance : -worldDistance);
+		updateBalanceShading ();
+	}
+
+	void updateBalanceShading () {
+		if (balanceValue >= 0f) {
+			float alpha = 1f - (balanceValue / maxBalanceValue); // [0.0, 1.0]
+			ballSprite.color = new Color (1f, 1f, 1f, alpha);
+		} else {
+			float darkness = 1f - (-balanceValue / maxBalanceValue);
+			ballSprite.color = new Color (darkness, darkness, darkness, 1f);
+		}
 	}
 
 	float speedDerivative (float t) {
@@ -71,15 +97,18 @@ public class Player : MonoBehaviour {
 		} else if (collision.gameObject.tag == "obstacle") {
 			Vector3 normal = collision.contacts[0].normal;
 			if (Mathf.Abs(normal.x) > Mathf.Abs(normal.y)) {
-				// Collided on side
-				dead = true;
-				StartCoroutine(deathAnimation());
+				die ();
 			} else {
 				// Collided on top
 				grounded = true;
 			}
 
 		}
+	}
+
+	void die () {
+		dead = true;
+		StartCoroutine (deathAnimation ());
 	}
 
 	IEnumerator deathAnimation() {
@@ -104,5 +133,8 @@ public class Player : MonoBehaviour {
 
 	void updateZPosition(float pos) {
 		transform.position = new Vector3 (transform.position.x, transform.position.y, pos);
+	}
+	void updateShadowPosition(float pos) {
+		shadow.transform.localPosition = new Vector3 (0, 0, pos);
 	}
 }
